@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\App;
 
 class RedirectController extends Controller
 {
-    public function redirect(Request $request){
+    public function redirect(){
         if(session()->has('locale'))
             return route('page.show', session()->get('locale'));
         else
