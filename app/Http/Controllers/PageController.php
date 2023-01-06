@@ -54,13 +54,11 @@ class PageController extends Controller
      */
     public function show($lang, $slug = null)
     {
-        //dd('Checkpoint 1 | PageController@show | App::getLocale(): ' . App::getLocale());
         if ($slug == null) {
             $page = Page::with(['pageDetails' => function ($query) {
                 $query->where('lang', App::getLocale());
             }])->first();
         } else {
-            //whereSlug ?
             $page = Page::withWhereHas('pageDetails', function ($query) use ($slug) {
                 $query->where('slug', $slug);
                 $query->where('lang', App::getLocale());
@@ -70,10 +68,6 @@ class PageController extends Controller
         if ($page) {
             return view('pages.' . $page->access_name, compact('page'));
         }
-
-
-
-        //dd('Checkpoint 2 | PageController@show');
         return redirect()->route('404', ['lang' => App::getLocale()]);
     }
 

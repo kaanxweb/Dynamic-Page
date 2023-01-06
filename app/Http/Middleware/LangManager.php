@@ -18,23 +18,13 @@ class LangManager
      */
     public function handle(Request $request, Closure $next)
     {
-
-
-
-        //dd(session()->get('locale'));
-
-        
-
         if (session()->has('locale') === false){
             session()->put('locale', App::getLocale());
         }
 
-
-        //If lang and url are not the same, redirect to the correct url
         if (session()->has('locale') && $request->segment(1) != session()->get('locale')) {
             $locale = DB::table('langs')->where('code', $request->segment(1))->first();
             if ($locale) {
-                //dd('Checkpoint 1 | LangManager Middleware | Redirect to correct url');
                 return redirect()->route('lang.change', ['lang' => $locale->code]);
             }else{
                 return redirect()->route('404', session()->get('locale'));
