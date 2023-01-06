@@ -1,11 +1,9 @@
 <?php
-
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LangController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PageDetailController;
+use App\Http\Controllers\RedirectController;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +24,7 @@ Route::get('/language/change', LangController::class . '@change')->name('lang.ch
 
 
 
-Route::get('/', function(){
-    return redirect()->route('page.show', session()->get('locale'));
-});
+Route::get('/', RedirectController::class . '@redirect')->name('redirect');
 Route::group(['prefix' => '{lang}', 'middleware' => ['web', 'langManager']
 ,], function () {
 
