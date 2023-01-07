@@ -9,8 +9,8 @@ class RedirectController extends Controller
 {
     public function redirect(){
         if(session()->has('locale'))
-            return route('page.show', session()->get('locale'));
+            return redirect()->route('page.show', session()->get('locale'));
         else
-            return route ('page.show', App::getLocale());
+            return redirect()->route ('page.show', App::getLocale());
     }
 }
