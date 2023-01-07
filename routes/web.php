@@ -35,7 +35,6 @@ Route::group(['prefix' => '{lang}', 'middleware' => ['web', 'langManager']
 
     //Show Page
     Route::get('{slug?}', [PageController::class, 'show'])->name('page.show');
-    Route::get('{slug}/{slugDetail}', [PageDetailController::class, 'show'])->name('pageDetail.show');
     
 
     //For Admin
