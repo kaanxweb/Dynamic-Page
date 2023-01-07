@@ -11,6 +11,6 @@ class RedirectController extends Controller
         if(session()->has('locale'))
             return redirect()->route('page.show', session()->get('locale'));
         else
-            return redirect()->route ('page.show', App::getLocale());
+            return redirect()->route('page.show', App::getLocale());
     }
 }
