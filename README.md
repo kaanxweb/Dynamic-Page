@@ -1,3 +1,5 @@
+!!New Update Coming Soon!!
+
 Dynamic Page
 
 :bangbang: Important! There is not only a dynamic page structure here, but also a dynamic language structure. The language is organized to appear in the url as well.
